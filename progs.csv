@@ -4,13 +4,11 @@ zathura,A general document viewer (minimalist)
 zathura-pdf-mupdf,Allows zathura to view PDF documents
 nsxiv,A simple (x) image viewer
 xterm,The X terminal emulator
-alacritty,A pretty fast terminal emulator
 mpv,Use this to watch your videos/movies
 eza,An ls alternative for colors
 xclip,Your system clipboard
 xdotool,Useful tool to automate keypresses
 xwallpaper,Make your desktop look nice
-nitrogen,A GUI method of establishing wallpapers
 picom,Enables transparency
 firefox,The default browser
 libnotify,Enables notifications to appear
@@ -27,11 +25,6 @@ bluez,Bluetooth application
 bluez-utils,Tools for bluetooth
 yt-dlp,To download videos (conveniently)
 noto-fonts,The main font of this configuration
-ttf-ubuntu-font-family,A pretty good font for the bar
-otf-hasklig-nerd,You need this to display certain images in the statusbar
-xmonad,The hackable tiling window manager written in Haskell
-xmonad-contrib,Extensions for the xmonad tiling window manager
-qtile,Window manager written in Python
 ncmpcpp,A terminal music client for mpd (use alongside mpd and mpc)
 mpd,This is a simple daemon for playing music (use with ncmpcpp and mpc)
 mpc,Command-line client for mpd (use with ncmpcpp and mpd)
