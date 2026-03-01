@@ -3,7 +3,6 @@ xorg-xinit,Start the graphical user interface
 zathura,A general document viewer (minimalist)
 zathura-pdf-mupdf,Allows zathura to view PDF documents
 nsxiv,A simple (x) image viewer
-xterm,The X terminal emulator
 mpv,Use this to watch your videos/movies
 eza,An ls alternative for colors
 xclip,Your system clipboard
@@ -25,6 +24,7 @@ bluez,Bluetooth application
 bluez-utils,Tools for bluetooth
 yt-dlp,To download videos (conveniently)
 noto-fonts,The main font of this configuration
+noto-fonts-emoji,Emoji characters for modules
 ncmpcpp,A terminal music client for mpd (use alongside mpd and mpc)
 mpd,This is a simple daemon for playing music (use with ncmpcpp and mpc)
 mpc,Command-line client for mpd (use with ncmpcpp and mpd)
@@ -37,7 +37,6 @@ bc,A calculator in your terminal
 lxappearance,Set a GTK theme for your system
 transmission-cli,A terminal client used to download torrents
 lf,File manager written in go (ranger replacement)
-pcmanfm,A gui file manager
 gimp,The GNU image manipulation program
 ueberzugpp,Display image previews
 kdenlive,A video editor
