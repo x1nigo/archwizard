@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
 
-# Apropos - A simple, post-arch, bash installer script for my configuration
-# files and system setup.
+# Arch Wizard - A simple, post arch-based, bash installer script for my configuration files and system setup.
 # Chris Iñigo <https://github.com/x1nigo>
 
-### GENERAL VARIABLES ###
-
+### Variables ###
 dotfilesrepo="https://github.com/x1nigo/dotfiles.git"
 export TERM=ansi
 
-### FUNCTIONS ###
-
+### Functions ###
 installpkg() {
 	pacman --noconfirm --needed -S "$1" >/dev/null 2>&1
 }
@@ -46,6 +43,26 @@ adduserandpass() {
 	srcdir="/home/$name/.local/src"
 	echo "%wheel ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/temp
 	sudo -u "$name" mkdir -p "$srcdir"
+}
+
+### Allows Artix to access Arch repositories. ###
+refreshkeys() {
+	case "$(readlink -f /sbin/init)" in
+	*systemd*)
+		whiptail --infobox "Refreshing Arch Keyring..." 7 40
+		pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
+		;;
+	*)
+		whiptail --infobox "Enabling Arch Repositories for more a more extensive software collection..." 7 40
+		pacman --noconfirm --needed -S \
+			artix-keyring artix-archlinux-support >/dev/null 2>&1
+		grep -q "^\[extra\]" /etc/pacman.conf ||
+			echo "[extra]
+Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
+		pacman -Sy --noconfirm >/dev/null 2>&1
+		pacman-key --populate archlinux >/dev/null 2>&1
+		;;
+	esac
 }
 
 maininstall() {
@@ -110,13 +127,23 @@ exitmsg() {
 		--msgbox "Congratulations! You now have a fully functioning Arch Linux desktop which you may now use as your daily driver.\\n\\nProvided that there were no hidden errors, you're good to go! And if there were, I'm sure you can figure it out.\\n\\n-CB2" 13 80
 }
 
-### EXECUTION PHASE ###
+### Main Functions ###
 
 pacman --noconfirm --needed -Sy libnewt || error "Make sure you're running this Arch-based distribution as root with an internet connection."
-welcomemsg || error "User exited."
-getuserandpass # Already has a custom error message.
-adduserandpass || error "User exited."
+
+welcomemsg || error "You're not welcome, I guess."
+
+# Already has a custom error message.
+getuserandpass
+
+adduserandpass || error "Failed to add user and password."
+
+refreshkeys || error "Failed to refresh keys."
+
 installationloop || error "User exited."
-installconfig || error "User exited."
-resetpermissions || error "User exited."
+
+installconfig || error "Failed to install configuration files."
+
+resetpermissions || error "Permissions error."
+
 exitmsg
