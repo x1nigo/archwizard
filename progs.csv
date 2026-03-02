@@ -1,6 +1,5 @@
-xorg-server,This is the graphical user interface (display server)
-xorg-xinit,Start the graphical user interface
-xorg-xset,A user preference utility for X
+xorg,This is the graphical user interface (display server)
+xorg-xinit,Used to start the display server
 zathura,A general document viewer (minimalist)
 zathura-pdf-mupdf,Allows zathura to view PDF documents
 nsxiv,A simple (x) image viewer
@@ -23,8 +22,9 @@ sof-firmware,Sound firmware - enables the mic too
 alsa-utils, Advanced Linux Sound Architecture Utilities
 bluez,Bluetooth application
 bluez-utils,Tools for bluetooth
+bluez-runit,Bluetooth service for runit
 yt-dlp,To download videos (conveniently)
-noto-fonts,The main font of this configuration
+ttf-liberation,The system's default font family
 noto-fonts-emoji,Emoji characters for modules
 ncmpcpp,A terminal music client for mpd (use alongside mpd and mpc)
 mpd,This is a simple daemon for playing music (use with ncmpcpp and mpc)
@@ -32,19 +32,15 @@ mpc,Command-line client for mpd (use with ncmpcpp and mpd)
 maim,If you want to take a screenshot
 polkit,Authentication tool for permissions
 openssh,For remote login and network services
-fzf,Another tool for searching
 arandr,Tool for screen connecting (e.g. HDMI)
 bc,A calculator in your terminal
 lxappearance,Set a GTK theme for your system
 transmission-cli,A terminal client used to download torrents
 lf,File manager written in go (ranger replacement)
-gimp,The GNU image manipulation program
 ueberzugpp,Display image previews
-kdenlive,A video editor
-audacity,An audio editor
 ffmpeg,A media converter
 ffmpegthumbnailer,Generates video file thumbnails
-ImageMagick,The best command-line tool for images
+imagemagick,The best command-line tool for images
 poppler,Image previews for PDF files
 bat,Renders color highlights for text files
 lm_sensors,Gets the CPU temperature
