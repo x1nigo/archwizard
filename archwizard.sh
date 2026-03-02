@@ -9,7 +9,7 @@ export TERM=ansi
 
 ### Functions ###
 installpkg() {
-	pacman --noconfirm --needed -S "$1" >/dev/null 2>&1
+	pacman --noconfirm --needed -S "$1"
 }
 
 error() {
@@ -19,7 +19,7 @@ error() {
 
 welcomemsg() {
 	whiptail --title "Welcome\!" \
-		--msgbox "This script should be able to install my configuration files for Arch Linux.\\n-CB2\\n\\nWARNING: This should be run as root - preferrably on a fresh install of Arch." 12 60
+		--msgbox "This script should be able to install my configuration files for Arch or Artix Linux.\\n-CB2\\n\\nWARNING: This should be run as root - preferrably on a fresh install of Arch/Artix." 12 60
 }
 
 getuserandpass() {
@@ -50,17 +50,17 @@ refreshkeys() {
 	case "$(readlink -f /sbin/init)" in
 	*systemd*)
 		whiptail --infobox "Refreshing Arch Keyring..." 7 40
-		pacman --noconfirm -S archlinux-keyring >/dev/null 2>&1
+		pacman --noconfirm -S archlinux-keyring
 		;;
 	*)
 		whiptail --infobox "Enabling Arch Repositories for more a more extensive software collection..." 7 40
 		pacman --noconfirm --needed -S \
-			artix-keyring artix-archlinux-support >/dev/null 2>&1
+			artix-keyring artix-archlinux-support
 		grep -q "^\[extra\]" /etc/pacman.conf ||
 			echo "[extra]
 Include = /etc/pacman.d/mirrorlist-arch" >>/etc/pacman.conf
-		pacman -Sy --noconfirm >/dev/null 2>&1
-		pacman-key --populate archlinux >/dev/null 2>&1
+		pacman -Sy --noconfirm
+		pacman-key --populate archlinux
 		;;
 	esac
 }
@@ -82,13 +82,13 @@ installationloop() {
 installconfig() {
 	clear
 	echo "Installing configuration files..."
-	sudo -u "$name" git -C "$srcdir" clone "$dotfilesrepo" >/dev/null 2>&1
+	sudo -u "$name" git -C "$srcdir" clone "$dotfilesrepo"
 	# Install dwm and other suckless software.
  	clear
   	echo "Compiling suckless software..."
-	for i in dwm st dmenu dwmblocks; do
-		sudo -u "$name" git -C "$srcdir" clone "https://github.com/x1nigo/$i.git" >/dev/null 2>&1
-		cd "$srcdir"/"$i" && make clean install >/dev/null 2>&1
+	for program in dwm st dmenu dwmblocks; do
+		sudo -u "$name" git -C "$srcdir" clone "https://github.com/x1nigo/$program.git"
+		cd "$srcdir"/"$program" && make clean install
 	done
 	# Transfer ".local" and ".config" files to their respective locations.
  	clear
@@ -118,6 +118,7 @@ resetpermissions() {
  	echo "Changing permissions for the user..."
 	rm -f /etc/sudoers.d/temp
 	echo "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/00-wheel-sudo
+	echo "%wheel ALL=(ALL:ALL) NOPASSWD: /usr/bin/shutdown,/usr/bin/reboot,/usr/bin/systemctl suspend,/usr/bin/wifi-menu,/usr/bin/mount,/usr/bin/umount,/usr/bin/make,/usr/bin/make install,/usr/bin/make clean install,/usr/bin/pacman -Syu,/usr/bin/pacman -Syyu,/usr/bin/pacman -Syyu --noconfirm,/usr/bin/loadkeys,/usr/bin/pacman -Syyuw --noconfirm,/usr/bin/pacman -S -y --config /etc/pacman.conf --,/usr/bin/pacman -S -y -u --config /etc/pacman.conf --" >/etc/sudoers.d/01-wheel-no-passwords
  	usermod -a -G video "$name"
 	chsh -s /bin/zsh "$name"
 }

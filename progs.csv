@@ -1,5 +1,6 @@
 xorg-server,This is the graphical user interface (display server)
 xorg-xinit,Start the graphical user interface
+xorg-xset,A user preference utility for X
 zathura,A general document viewer (minimalist)
 zathura-pdf-mupdf,Allows zathura to view PDF documents
 nsxiv,A simple (x) image viewer
