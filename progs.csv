@@ -38,6 +38,7 @@ lxappearance,Set a GTK theme for your system
 transmission-cli,A terminal client used to download torrents
 lf,File manager written in go (ranger replacement)
 ueberzugpp,Display image previews
+unclutter,Temporarily removes mouse from screen if inactive
 ffmpeg,A media converter
 ffmpegthumbnailer,Generates video file thumbnails
 imagemagick,The best command-line tool for images
