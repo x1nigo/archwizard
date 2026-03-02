@@ -125,7 +125,7 @@ resetpermissions() {
 
 exitmsg() {
 	whiptail --title "Installation Complete\!" \
-		--msgbox "Congratulations! You now have a fully functioning Arch Linux desktop which you may now use as your daily driver.\\n\\nProvided that there were no hidden errors, you're good to go! And if there were, I'm sure you can figure it out.\\n\\n-CB2" 13 80
+		--msgbox "Congratulations! You now have a fully functioning Arch/Artix Linux desktop which you may now use as your daily driver.\\n\\nProvided that there were no hidden errors, you're good to go! And if there were, I'm sure you can figure it out.\\n\\n-CB2" 13 80
 }
 
 ### Main Functions ###
