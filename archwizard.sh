@@ -111,6 +111,8 @@ installconfig() {
 EndSection' >/etc/X11/xorg.conf.d/40-libinput.conf
 	# Make pacman look good.
 	grep -q "ILoveCandy" /etc/pacman.conf || sed -i "/#VerbosePkgLists/a ILoveCandy" /etc/pacman.conf
+	# Update user directories with `xdg-user-dirs-update`.
+	sudo -u "$name" xdg-user-dirs-update
 }
 
 resetpermissions() {
