@@ -45,5 +45,6 @@ imagemagick,The best command-line tool for images
 poppler,Image previews for PDF files
 bat,Renders color highlights for text files
 lm_sensors,Gets the CPU temperature
+xdg-user-dirs,To manage user directories
 zsh,The Z Shell (more options than bash)
 zsh-syntax-highlighting,As its name suggests
