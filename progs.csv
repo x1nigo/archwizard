@@ -24,7 +24,8 @@ bluez,Bluetooth application
 bluez-utils,Tools for bluetooth
 bluez-runit,Bluetooth service for runit
 yt-dlp,To download videos (conveniently)
-ttf-liberation,The system's default font family
+noto-fonts,The system's default font family
+ttf-liberation,The system's secondary font family
 noto-fonts-emoji,Emoji characters for modules
 ncmpcpp,A terminal music client for mpd (use alongside mpd and mpc)
 mpd,This is a simple daemon for playing music (use with ncmpcpp and mpc)
