@@ -8,7 +8,7 @@ eza,An ls alternative for colors
 xclip,Your system clipboard
 xdotool,Useful tool to automate keypresses
 xwallpaper,Make your desktop look nice
-picom,Enables transparency
+xcompmgr,Enables transparency
 firefox,The default browser
 libnotify,Enables notifications to appear
 brightnessctl,Adjusts screen brightness
